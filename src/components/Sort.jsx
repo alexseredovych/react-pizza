@@ -1,7 +1,50 @@
+import React from "react";
+import { useSelector , useDispatch} from 'react-redux'
+import { setSort } from '../redux/slices/filterSlice'
+
+export const list = [
+  { name: "Most popular to least popular", sortProperty: "rating" },
+  { name: "Least popular to most popular", sortProperty: "-rating" },
+  { name: "Low price to high price", sortProperty: "price" },
+  { name: "High price to low price", sortProperty: "-price" },
+  { name: "A-Z", sortProperty: "title" },
+  { name: "Z-A", sortProperty: "-title" },
+];
+
 function Sort() {
+  const dispatch = useDispatch()
+  const sort = useSelector(state => state.filter.sort)
+  const sortRef = React.useRef()
+
+  const [isVisiblePopup, setIsVisiblePopup] = React.useState(false);
+ 
+
+  const onClickListItem = (obj) => {
+    dispatch(setSort(obj))
+    setIsVisiblePopup(false);
+  };
+
+  // Close popup if clicked outside popup
+  React.useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.path.includes(sortRef.current)) {
+        setIsVisiblePopup(false);
+        console.log('click outside')
+      }
+    }
+
+    document.body.addEventListener('click', handleClickOutside)
+
+    // Below equal to component did unmount
+    return () => {
+      console.log('sortUnmount')
+      document.body.removeEventListener('click', handleClickOutside)
+    }
+  }, [])
+
   return (
-    <div class="sort">
-      <div class="sort__label">
+    <div ref={sortRef} className="sort">
+      <div className="sort__label">
         <svg
           width="10"
           height="6"
@@ -15,17 +58,31 @@ function Sort() {
           />
         </svg>
         <b>Sort by:</b>
-        <span>popularity</span>
+        <span onClick={() => setIsVisiblePopup(!isVisiblePopup)}>
+          {sort.name}
+        </span>
       </div>
-      <div class="sort__popup">
-        <ul>
-          <li class="active">popularity</li>
-          <li>price</li>
-          <li>A-Z</li>
-        </ul>
-      </div>
+      {isVisiblePopup && (
+        <div className="sort__popup">
+          <ul>
+            {list.map((obj, i) => (
+              <li
+                key={i}
+                onClick={() => {
+                  onClickListItem(obj);
+                }}
+                className={
+                  sort.sortProperty == obj.sortProperty ? "active" : ""
+                }
+              >
+                {obj.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
 
-export default Sort
+export default Sort;
