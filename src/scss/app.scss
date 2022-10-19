@@ -24,6 +24,22 @@ body {
 .content {
   padding: 40px 0;
 
+  &_error-info {
+    margin: 100px auto;
+    width: 500px;
+    text-align: center;
+
+    h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+  }
+
   &__title {
     margin: 35px 0;
     font-weight: 800;
@@ -66,19 +82,16 @@ body {
 
       .sort {
         padding-left: 20px;
-
       }
     }
 
     @media (max-width: 760px) {
-
       .categories {
         margin-top: 30px;
       }
-      
+
       flex-direction: column-reverse;
     }
-
   }
 }
 
@@ -147,6 +160,41 @@ body {
       }
       span {
         color: darken($color: #b6b6b6, $amount: 50);
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .cart__item {
+
+      .cart__item-info {
+        position: relative;
+        left: 45px;
+      }
+
+      h3, p {
+        font-size: 15px;
+      }
+
+      .cart__item-count {
+        display: flex;
+        flex-direction: column-reverse;
+        position: relative;
+        left: 53px;
+      }
+
+      .cart__item-price {
+        position: relative;
+        left: 30px;
+
+        b {
+          display: none;
+        }
+      }
+
+      .cart__item-remove {
+        position: relative;
+        top: 0px;
       }
     }
   }

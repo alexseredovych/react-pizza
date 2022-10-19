@@ -11,7 +11,7 @@
   }
 
   &__image {
-    width: 260px;
+    width: 240px;
   }
 
   &__title {
@@ -50,6 +50,17 @@
           cursor: auto;
         }
       }
+    }
+  }
+
+  @media (max-width: 410px) {
+    &__selector {
+      width: 250px;
+    }
+
+    .button--add {
+      position: relative;
+      left: -25px;
     }
   }
 

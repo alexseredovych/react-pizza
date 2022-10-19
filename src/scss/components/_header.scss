@@ -15,6 +15,17 @@
       .header__cart {
         margin-bottom: 20px;
       }
+
+      .header__logo {
+        margin-top: 20px;
+        margin-bottom: -50px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      input {
+        width: 240px;
+      }
     }
   }
 

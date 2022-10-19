@@ -1,0 +1,28 @@
+@import "../variables";
+
+@media (max-width: 712px) {
+  .content {
+    width: 100%;
+  }
+
+  .cart--empty {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+
+    .empty-cart-info {
+      text-align: center;
+        margin-top: -50px;
+
+      h2,
+      p {
+        font-size: 13px;
+      }
+    }
+
+    .empty-cart-img {
+      width: 200px;
+    }
+  }
+}

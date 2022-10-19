@@ -1,0 +1,45 @@
+@import "../variables";
+
+.container {
+    text-align: center;
+}
+
+.single-pizza-block {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 65px;
+}
+
+.single-add-button {
+  margin-left: 10px;
+}
+
+
+@media (max-width: 716px) {
+  .single-pizza-block {
+    text-align: center;
+    margin-bottom: 65px;
+
+    &__image {
+      width: 80%;
+    }
+  }
+}
+
+.single-add-button {
+    margin-top: 30px;
+}
+
+.loading-label {
+    text-align: center;
+    margin: 100px auto;
+  }
+
+  @media (max-width: 396px) {
+    .return-home {
+      margin-top: 20px;
+      margin-bottom: -10px;
+    }
+  }
+
+

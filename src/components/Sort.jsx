@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector , useDispatch} from 'react-redux'
-import { setSort } from '../redux/slices/filterSlice'
+import { selectSort, setSort } from '../redux/slices/filterSlice'
 
 export const list = [
   { name: "Most popular to least popular", sortProperty: "rating" },
@@ -13,7 +13,7 @@ export const list = [
 
 function Sort() {
   const dispatch = useDispatch()
-  const sort = useSelector(state => state.filter.sort)
+  const sort = useSelector(selectSort)
   const sortRef = React.useRef()
 
   const [isVisiblePopup, setIsVisiblePopup] = React.useState(false);
@@ -29,7 +29,6 @@ function Sort() {
     const handleClickOutside = (e) => {
       if (!e.path.includes(sortRef.current)) {
         setIsVisiblePopup(false);
-        console.log('click outside')
       }
     }
 

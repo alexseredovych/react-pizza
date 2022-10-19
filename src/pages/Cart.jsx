@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import CartItem from "../components/CartItem";
-import { clearItems } from "../redux/slices/cartSlice";
+import { clearItems, selectCart } from "../redux/slices/cartSlice";
 import CartEmpty from "../components/CartEmpty";
 
 function Cart() {
   const dispatch = useDispatch()
-  const { totalPrice, items } = useSelector(state => state.cart)
+  const { totalPrice, items } = useSelector(selectCart)
 
   const totalCount = items.reduce((sum, item) => sum + item.count, 0)
 
@@ -108,11 +108,9 @@ function Cart() {
         <div className="cart__bottom">
           <div className="cart__bottom-details">
             <span>
-              {" "}
               Pizza quantity: <b>{totalCount} </b>{" "}
             </span>
             <span>
-              {" "}
               Total Amount: <b>{totalPrice} $</b>{" "}
             </span>
           </div>
