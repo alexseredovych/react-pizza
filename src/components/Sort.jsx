@@ -71,7 +71,7 @@ function Sort() {
                   onClickListItem(obj);
                 }}
                 className={
-                  sort.sortProperty == obj.sortProperty ? "active" : ""
+                  sort.sortProperty === obj.sortProperty ? "active" : ""
                 }
               >
                 {obj.name}

@@ -92,7 +92,7 @@ function Home() {
   React.useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
-      const sort = list.find((obj) => obj.sortProperty == params.sortProperty);
+      const sort = list.find((obj) => obj.sortProperty === params.sortProperty);
 
       dispatch(
         setFilters({
@@ -125,7 +125,7 @@ function Home() {
         <Sort />
       </div>
       <h2 className="content__title">All pizzas</h2>
-      {status == "error" ? (
+      {status === "error" ? (
         <div className="content_error-info">
           <h2>
             There was an error <icon>😕</icon>
@@ -134,7 +134,7 @@ function Home() {
         </div>
       ) : (
         <div className="content__items">
-          {status == "loading" ? skeletons : items}
+          {status === "loading" ? skeletons : items}
         </div>
       )}
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />

@@ -10,7 +10,7 @@ function Categories({ value, onClickCategory }) {
           <li
             key={i}
             onClick={() => onClickCategory(i)}
-            className={value == i ? "active" : ""}
+            className={value === i ? "active" : ""}
           >
             {categoryName}
           </li>
