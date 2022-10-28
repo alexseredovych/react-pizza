@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -15,7 +16,6 @@ const CartEmpty = () => {
             To make an order, please return to Home page
           </p>
         </div>
-        // eslint-disable-next-line
         <img className="empty-cart-img" src={cartEmptyImg} alt='empty-car' />
         <Link to="/" className="button button--black">
           <span>Return to Home</span>
